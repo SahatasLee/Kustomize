@@ -1,0 +1,30 @@
+resources:
+- ../base
+namePrefix: prd-
+nameSuffix: -v1
+patches:
+- patch: |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: nginx-deployment
+    spec:
+      template:
+        spec:
+          containers:
+          - name: nginx
+            image: nginx:1.27
+- patch: |-
+    apiVersion: apps/v1
+    kind: Service
+    metadata:
+      name: nginx-service
+    spec:
+      type: NodePort
+configMapGenerator:
+- name: the-map
+  literals:
+    - altGreeting=Good Morning!
+    - enableRisky="false"
+commonLabels:
+  app: hello

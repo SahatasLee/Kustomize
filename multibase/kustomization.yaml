@@ -1,0 +1,6 @@
+# kustomization.yaml contents
+resources:
+- ./dev
+- ./staging
+- ./prd
+namePrefix: cat-cluster-

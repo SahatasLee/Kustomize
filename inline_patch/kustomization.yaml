@@ -1,0 +1,6 @@
+# kustomization.yaml contents
+resources:
+- ./prd
+- ./smp_patch
+
+namePrefix: cat-cluster-

@@ -1,0 +1,17 @@
+# deployments.yaml contents
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  template:
+    metadata:
+      labels:
+        foo: bar
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          args:
+          - arg1
+          - arg2
