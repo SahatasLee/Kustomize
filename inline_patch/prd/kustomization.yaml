@@ -14,13 +14,19 @@ patches:
           containers:
           - name: nginx
             image: nginx:1.27
-- patch: |-
-    apiVersion: apps/v1
+- target:
     kind: Service
-    metadata:
-      name: nginx-service
-    spec:
-      type: NodePort
+    name: nginx-service
+  patch: |-
+    - op: replace
+      path: /spec/type
+      value: NodePort
+    - op: replace
+      path: /spec/ports
+      value:
+        - protocol: TCP
+          port: 8080
+          targetPort: 8080
 configMapGenerator:
 - name: the-map
   literals:
