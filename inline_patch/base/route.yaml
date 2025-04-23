@@ -1,0 +1,14 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: nginx-route
+spec:
+  host: nginx-route-testapp.apps.tcc-ocp-dc.tcc-technology.com
+  to:
+    kind: Service
+    name: ocp-prd-nginx-service-v1
+    weight: 100
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge
